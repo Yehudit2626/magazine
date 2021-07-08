@@ -21,7 +21,7 @@ const getAllUsers=async(req,res)=>{
 
 const getUserById=async(req,res)=>{
     try {
-        let user=await User.findById(req.params.userId);
+        let user=await User.findById(req.params.userId).populate("magazines");
         res.send(user)
     } catch (error) {
         res.send(err)
