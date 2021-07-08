@@ -3,6 +3,7 @@ const Magazin=require('../models/magazine')
 
 const createPost=async(req,res)=>{
     try {
+        
         let post=new Post(req.body)
         await post.save()
         let magazin=Magazin.findById(post.magazin)
