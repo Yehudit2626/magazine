@@ -1,10 +1,9 @@
 const router=require('express').Router() 
-const employedFunctions=require('./controllers/employed')
+const magazineFunctions=require('./controllers/magazine')
 
-router.post('/checkPermission', employedFunctions.checkPermission)
-router.get('/getAllEmployed', employedFunctions.getAllEmployed)
-router.get('/getEmployedById/:id', employedFunctions.getEmployedById)
-router.post('/setNewEmployed', employedFunctions.setNewEmployed)
-router.post('/updateEmployed/:id', employedFunctions.updateEmployed)
+router.post('/createMagazine', magazineFunctions.createMagazine)
+router.get('/getMagazinesByUser/:userId', magazineFunctions.getMagazinesByUser)
+router.get('/deleteMagazine/:magazineId', magazineFunctions.deleteMagazine)
+router.get('/getAllMagazines', magazineFunctions.getAllMagazines)
 
 module.exports=router
