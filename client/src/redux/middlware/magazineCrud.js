@@ -1,3 +1,5 @@
+import actions from "../actions";
+
 export const createMagazine=({dispatch,getState})=>next=>action=>{
     if(action.type==="CREATE_MAGAZINE"){
         fetch('http://localhost:3010/createMagazine', {
