@@ -6,6 +6,8 @@ const dotenv=require('dotenv')
 dotenv.config()
 const mongoose=require ('mongoose')
 const router=require ('./router')
+const {checkPermission}=require('./controllers/middlware')
+
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -15,5 +17,5 @@ const options = {
 mongoose.connect(process.env.DB_CONNECT, options)
 .then(()=> console.log('connected'))
 .catch((error)=>{console.log(`cannot connect ${error}`)})
-app.use(router)
+app.use(checkPermission,router)
 app.listen(3010,()=>{console.log('port 3010')});

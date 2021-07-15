@@ -1,10 +1,15 @@
 const User=require('../models/user')
+const jwt=require('jsonwebtoken')
 
 const createUser=async(req,res)=>{
     try {
+        console.log("in create user");
         let user=new User(req.body)   
         await user.save()
-        res.status(200).json({user:user})
+        console.log("after save:"+user);
+        let token = jwt.sign({ password: user.password, name: user.name }, process.env.SECRET)
+        console.log("token:"+token);
+        res.status(200).json({user:user,token:token})
     } catch (error) {
         res.json({status:400, message:error})
     }
